@@ -1,22 +1,27 @@
-import { createServer } from 'http'
-import { parse } from 'url'
-import next from 'next'
+import express from 'express';
+import next from 'next';
+import dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
+import helmet from 'helmet';
+import translationMiddleware from './middlewares/translation';
 
-const port = parseInt(process.env.PORT || '3000', 10)
-const dev = process.env.NODE_ENV !== 'production'
-const app = next({ dev })
-const handle = app.getRequestHandler()
+dotenv.config();
+
+const dev = process.env.NODE_ENV !== 'production';
+const app = next({ dev });
+const handle = app.getRequestHandler();
+
+const PORT = process.env.PORT || 3000;
 
 app.prepare().then(() => {
-  createServer((req, res) => {
-    const parsedUrl = parse(req.url!, true)
-    handle(req, res, parsedUrl)
-  }).listen(port)
+  const server = express();
 
-  // tslint:disable-next-line:no-console
-  console.log(
-    `> Server listening at http://localhost:${port} as ${
-      dev ? 'development' : process.env.NODE_ENV
-    }`
-  )
-})
+  server.use(helmet());
+  server.use(cookieParser());
+
+  server.use(translationMiddleware);
+
+  server.all('*', (req, res) => handle(req, res));
+
+  server.listen(PORT, () => console.log(`App has been started on port ${PORT}...`));
+});

@@ -1,11 +1,17 @@
 {
-  "extends": "./tsconfig.json",
   "compilerOptions": {
     "module": "commonjs",
+    "esModuleInterop": true,
+    "target": "es6",
+    "moduleResolution": "node",
+    "sourceMap": true,
     "outDir": "dist",
-    "target": "es2017",
-    "isolatedModules": false,
-    "noEmit": false
+    "resolveJsonModule": true,
+    "typeRoots": [
+      "@types",
+      "./node_modules/@types"
+    ]
   },
-  "include": ["server/**/*.ts"]
+  "include": ["server"],
+  "lib": ["es2015"]
 }

@@ -2,6 +2,7 @@
   "settings": {
     "import/resolver": {
       "node": {
+        "paths": ["."],
         "extensions": [".js", ".jsx", ".ts", ".tsx", ".d.ts"]
       }
     }
@@ -55,6 +56,9 @@
       ]
     }],
     "react/jsx-props-no-spreading": "off",
-    "consistent-return": "off"
+    "consistent-return": "off",
+    "import/no-unresolved": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/no-var-requires": "off"
   }
 }

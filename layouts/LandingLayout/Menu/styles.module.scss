@@ -1,0 +1,9 @@
+.menu {
+  display: flex;
+  position: sticky;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.6rem;
+  background-color: $secondary-lightest;
+}

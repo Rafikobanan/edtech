@@ -3,6 +3,7 @@ import { IntlProvider } from 'react-intl';
 import App, { AppContext, AppProps } from 'next/app';
 import { Request } from 'express';
 import useTranslationStore from '../hooks/useTranslationStore';
+import 'styles/index.scss';
 
 interface MyAppProps extends AppProps {
   messages: Request['messages'];

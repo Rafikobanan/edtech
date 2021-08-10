@@ -23,8 +23,10 @@ export default class MyDocument extends Document<MyDocumentProps> {
 
     return (
       <Html lang="en">
-        <Head />
-        <body>
+        <Head>
+          <link rel="stylesheet" href="https://use.typekit.net/unr4qmo.css" />
+        </Head>
+        <body className="light">
           <div dangerouslySetInnerHTML={{ __html: spriteContent }} />
           <Main />
           <NextScript />

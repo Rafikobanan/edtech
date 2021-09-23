@@ -1,16 +1,38 @@
 .burger {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   width: 2.4rem;
   height: 2.4rem;
   cursor: pointer;
 
   span {
+    transition: all .2s;
     width: 2rem;
     height: 0.2rem;
     margin-bottom: 0.4rem;
     background-color: $primary;
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  &.active {
+    span {
+      &:nth-child(1) {
+        transform: translateY(0.1rem) rotate(45deg);
+      }
+
+      &:nth-child(2) {
+        transition: all 0s;
+        width: 0;
+      }
+
+      &:nth-child(3) {
+        transform: translateY(-1.1rem) rotate(-45deg);
+      }
+    }
   }
 }

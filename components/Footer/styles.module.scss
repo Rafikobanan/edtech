@@ -1,0 +1,111 @@
+.footer {
+  padding: 2.4rem 1.6rem;
+  background: $secondary-lightest;
+}
+
+.instagram {
+  width: 2rem;
+  height: 2rem;
+}
+
+.youtube {
+  width: 2rem;
+  height: 2rem;
+}
+
+.tikTok {
+  width: 2rem;
+  height: 2rem;
+}
+
+.linkedin {
+  width: 2rem;
+  height: 2rem;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button {
+  padding: 0.8rem 1.6rem;
+}
+
+.content {
+  padding-top: 5.4rem;
+
+  @include large {
+    display: flex;
+  }
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 1 100%;
+
+  @include large {
+    padding-left: 20rem;
+  }
+
+  @include x-large {
+    padding-left: 26rem;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 50%;
+  padding-bottom: 4rem;
+
+  a {
+    @include text-size(5);
+    color: $secondary-darkest;
+    font-weight: 600;
+    margin: 0.8rem 0;
+
+    @include hover {
+      color: $primary;
+    }
+
+    &.activeLink {
+      color: $primary;
+    }
+  }
+
+  @include large {
+    flex: 0 0 25%;
+  }
+}
+
+.columnTitle {
+  @include text-size(5);
+  color: $secondary-darker;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 1.6rem;
+}
+
+.socials {
+  display: flex;
+  margin-bottom: 4.8rem;
+}
+
+.iconButton {
+  & + & {
+    margin-left: 1.6rem;
+  }
+}
+
+.copy {
+  @include text-size(6);
+  display: flex;
+  align-items: center;
+
+  img {
+    margin: 0 0.4rem;
+  }
+}

@@ -1,33 +1,27 @@
 import React from 'react';
 import Document, { DocumentContext, Head, Html, Main, NextScript } from 'next/document';
-// @ts-ignore
-import sprite from 'svg-sprite-loader/runtime/sprite.build';
 
-interface MyDocumentProps {
-  spriteContent: string;
-}
-
-export default class MyDocument extends Document<MyDocumentProps> {
+export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const initialProps = await Document.getInitialProps(ctx);
-    const spriteContent = sprite.stringify();
 
     return {
-      spriteContent,
       ...initialProps
     };
   }
 
   render() {
-    const { spriteContent } = this.props;
-
     return (
       <Html lang="en">
         <Head>
-          <link rel="stylesheet" href="https://use.typekit.net/unr4qmo.css" />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap"
+            rel="stylesheet"
+          />
         </Head>
         <body className="light">
-          <div dangerouslySetInnerHTML={{ __html: spriteContent }} />
           <Main />
           <NextScript />
         </body>

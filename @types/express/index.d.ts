@@ -1,3 +1,5 @@
+import { Languages } from '../../server/services/translations';
+
 export {};
 
 declare global {
@@ -6,6 +8,8 @@ declare global {
       messages: {
         [key: string]: string;
       };
+
+      language: Languages;
     }
   }
 }

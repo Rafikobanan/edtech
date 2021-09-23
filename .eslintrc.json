@@ -52,13 +52,19 @@
     "no-param-reassign": ["error", {
       "props": true,
       "ignorePropertyModificationsFor": [
-        "req"
+        "req",
+        "state"
       ]
     }],
     "react/jsx-props-no-spreading": "off",
     "consistent-return": "off",
     "import/no-unresolved": "off",
     "@typescript-eslint/ban-ts-comment": "off",
-    "@typescript-eslint/no-var-requires": "off"
+    "@typescript-eslint/no-var-requires": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "react/no-array-index-key": "off",
+    "jsx-a11y/anchor-has-content": "off",
+    "class-methods-use-this": "off",
+    "import/prefer-default-export": "off"
   }
 }

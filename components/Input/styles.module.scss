@@ -1,0 +1,37 @@
+.inputWrapper {
+  display: inline-block;
+  position: relative;
+  color: $secondary-darkest;
+}
+
+.placeholder {
+  @include text-size(5);
+  pointer-events: none;
+  position: absolute;
+  top: 2.2rem;
+  left: 1.6rem;
+  transition: all .3s;
+
+  &.active {
+    @include text-size(7);
+    color: $secondary-darker;
+    top: 1.2rem;
+  }
+}
+
+.input {
+  padding: 3rem 1.6rem 1.2rem;
+  background: $secondary-light;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  width: 100%;
+
+  @include hover {
+    background: $secondary;
+  }
+
+  &:focus {
+    border-color: $primary-light;
+    background: $secondary-light;
+  }
+}

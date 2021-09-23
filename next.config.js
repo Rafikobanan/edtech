@@ -1,6 +1,4 @@
 const path = require('path');
-const withPlugins = require('next-compose-plugins');
-const optimizedImages = require('next-optimized-images');
 
 const nextConfig = {
   pageExtensions: ['jsx', 'js', 'ts', 'tsx'],
@@ -10,14 +8,15 @@ const nextConfig = {
       @import "./styles/variables.scss";
       @import "./styles/mixins.scss";
     `
+  },
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack']
+    });
+
+    return config;
   }
 };
 
-module.exports = withPlugins(
-  [
-    [
-      optimizedImages
-    ]
-  ],
-  nextConfig
-);
+module.exports = nextConfig;

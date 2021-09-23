@@ -1,0 +1,32 @@
+.button {
+  position: relative;
+  overflow: hidden;
+}
+
+.content {
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ripple {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  background: currentColor;
+  display: block;
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: ripple-effect 0.3s linear forwards;
+}
+
+@keyframes ripple-effect {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}

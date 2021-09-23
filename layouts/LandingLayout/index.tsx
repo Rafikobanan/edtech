@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from 'components/Footer';
 import Menu from './Menu';
 import styles from './styles.module.scss';
 
@@ -10,6 +11,7 @@ const LandingLayout = ({ children }: LandingLayoutProps) => (
   <>
     <Menu />
     <div className={styles.container}>{children}</div>
+    <Footer />
   </>
 );
 

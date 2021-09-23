@@ -1,0 +1,19 @@
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -0.4rem;
+}
+
+.input {
+  width: calc(100% - 0.8rem);
+  margin: 0.4rem;
+
+  &.half {
+    width: calc(50% - 0.8rem);
+  }
+}
+
+.submit {
+  width: 100%;
+  margin: 3.2rem 0.4rem 0;
+}

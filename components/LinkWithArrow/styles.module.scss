@@ -1,0 +1,17 @@
+.link {
+  display: flex;
+  align-items: center;
+
+  svg {
+    transition: transform .2s;
+    margin-left: 0.4rem;
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+
+  @include hover {
+    svg {
+      transform: translateX(1rem);
+    }
+  }
+}

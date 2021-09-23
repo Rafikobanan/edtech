@@ -1,16 +1,16 @@
 import React from 'react';
-import Icon from 'components/Icon';
-import edufutSvg from 'svgs/edufut.svg?sprite';
+import EdufutSvg from 'assets/edufut.svg';
+import AppLink from 'components/AppLink';
+import { HREFS } from 'config';
 import styles from './styles.module.scss';
 
 const Logo = () => (
-  <div className={styles.wrapper}>
-    <Icon className={styles.logo} glyph={edufutSvg.id} />
-    <div className={styles.content}>
+  <AppLink href={HREFS.forStudents}>
+    <div className={styles.wrapper}>
+      <EdufutSvg className={styles.logo} />
       <div className={styles.name}>EduFut</div>
-      <div className={styles.subname}>Education of the Future</div>
     </div>
-  </div>
+  </AppLink>
 );
 
 export default Logo;

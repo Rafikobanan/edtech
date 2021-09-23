@@ -1,0 +1,32 @@
+.button {
+  @include text-size(5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s, color .2s;
+  padding: 1.45rem 7.55rem;
+  border-radius: 100px;
+  font-weight: 600;
+}
+
+.contained {
+  &.primary {
+    background: $primary;
+    color: $secondary-lightest;
+
+    @include hover {
+      color: $secondary-lightest;
+      background: $primary-light;
+    }
+  }
+
+  &.secondary {
+    background: $primary-lightest;
+    color: $primary;
+
+    @include hover {
+      color: $secondary-lightest;
+      background: $primary-light;
+    }
+  }
+}

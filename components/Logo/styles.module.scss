@@ -9,18 +9,9 @@
   fill: $primary;
 }
 
-.content {
-  color: $primary;
-  margin-left: 0.9rem;
-}
-
 .name {
-  @include text-size(5);
+  @include text-size(3);
   font-weight: 600;
-}
-
-.subname {
-  font-size: 1rem;
-  line-height: 1.4;
-  color: $secondary-darkest;
+  color: $primary;
+  margin-left: 0.8rem;
 }

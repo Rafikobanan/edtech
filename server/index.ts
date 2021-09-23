@@ -3,7 +3,8 @@ import next from 'next';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
-import translationMiddleware from './middlewares/translation';
+import routes from './routes';
+import languageMiddleware from './middlewares/language';
 
 dotenv.config();
 
@@ -19,7 +20,9 @@ app.prepare().then(() => {
   server.use(helmet());
   server.use(cookieParser());
 
-  server.use(translationMiddleware);
+  server.use(routes);
+
+  server.use(languageMiddleware);
 
   server.all('*', (req, res) => handle(req, res));
 

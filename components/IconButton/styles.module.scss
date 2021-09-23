@@ -1,0 +1,33 @@
+.strokeDisabled {
+  svg {
+    stroke: none;
+  }
+}
+
+.fillDisabled {
+  svg {
+    fill: none;
+  }
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.primary {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 12px;
+  background: $primary-lightest;
+  stroke: $primary;
+  fill: $primary;
+
+  @include hover {
+    fill: $secondary-lightest;
+    stroke: $secondary-lightest;
+    background: $primary;
+  }
+}
+

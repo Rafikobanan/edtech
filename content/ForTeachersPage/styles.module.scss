@@ -1,0 +1,253 @@
+.firstSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.6rem 0 5.4rem;
+
+  @include large {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.firstSectionImage {
+  max-width: 34.3rem;
+  width: 100%;
+  filter: drop-shadow(0px 40px 80px rgba(230, 230, 230, 0.32));
+  border-radius: 16px;
+  margin-bottom: 1.8rem;
+
+  @include large {
+    order: 1;
+  }
+}
+
+.firstSectionContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include large {
+    align-items: flex-start;
+    width: 54rem;
+  }
+}
+
+.firstSectionTitle {
+  color: $secondary-darkest;
+  text-align: center;
+  font-size: 3.2rem;
+  line-height: 1.375;
+  font-weight: 600;
+  margin: 1.6rem 0 0.8rem;
+
+  span {
+    color: $primary;
+  }
+
+  @include large {
+    @include text-size(1);
+    text-align: left;
+  }
+}
+
+.firstSectionSubtitle {
+  @include text-size(5);
+  margin: 0.8rem 0;
+  color: $secondary-darkest;
+
+  @include large {
+    @include text-size(4);
+  }
+}
+
+.firstSectionButton {
+  margin: 5.6rem 0;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 1.35;
+  color: $secondary-darkest;
+  margin: 1.6rem 0;
+  text-align: center;
+
+  span {
+    color: $primary;
+  }
+
+  img {
+    width: 2.3rem;
+    height: 2.3rem;
+  }
+
+  @include large {
+    @include text-size(3);
+  }
+}
+
+.cardWrapper {
+  margin: 4.8rem 0 0;
+
+  @include medium {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+.advantages {
+  padding: 5.4rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card {
+  position: relative;
+  border-radius: 16px;
+  padding: 3.2rem;
+  margin: 0.8rem 0;
+
+  & > svg {
+    position: absolute;
+    bottom: 3.2rem;
+    right: 3.2rem;
+  }
+
+  &:nth-child(1) {
+    background-color: $blue-lightest;
+
+    .cardTitle {
+      color: $blue;
+    }
+
+    & > svg {
+      fill: $blue;
+      width: 7.6rem;
+      height: 7.6rem;
+    }
+  }
+
+  &:nth-child(2) {
+    background-color: $purple-lightest;
+
+    .cardTitle {
+      color: $purple;
+    }
+
+    & > svg {
+      fill: $purple;
+      width: 7.6rem;
+      height: 7.6rem;
+    }
+  }
+
+  &:nth-child(3) {
+    background-color: $warning-lightest;
+
+    .cardTitle {
+      color: $warning;
+    }
+
+    & > svg {
+      fill: $warning;
+      width: 7.6rem;
+      height: 7.6rem;
+    }
+  }
+
+  &:nth-child(4) {
+    background-color: $danger-lightest;
+
+    .cardTitle {
+      color: $danger;
+    }
+
+    & > svg {
+      fill: $danger;
+      width: 7.6rem;
+      height: 7.6rem;
+    }
+  }
+
+  @include medium {
+    width: 48.7%;
+    margin: 1.5rem 0;
+  }
+}
+
+.cardTitle {
+  @include text-size(4);
+  font-weight: 600;
+  margin-bottom: 1.6rem;
+}
+
+.cardContent {
+  @include text-size(5);
+  color: $secondary-darkest;
+  width: 72%;
+}
+
+.company {
+  padding: 5.4rem 0;
+}
+
+.subtitle {
+  @include text-size(4);
+  color: $secondary-darkest;
+  text-align: center;
+  max-width: 73rem;
+  margin: 0 auto;
+
+  span {
+    color: $primary;
+  }
+}
+
+.companySubtitle {
+  @include text-size(4);
+  color: $primary;
+  margin: 2.4rem 0;
+  text-align: center;
+}
+
+.slider {
+  display: flex;
+  width: 100%;
+  margin: 4rem 0;
+}
+
+.invertedFace {
+  width: 6.4rem;
+  height: 6.4rem;
+}
+
+.sliderItem {
+  flex: 0 0 16rem;
+  margin: 0 1.5rem;
+  box-shadow: 0px 40px 80px rgba(230, 230, 230, 0.32);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4.8rem 2rem 2rem;
+  height: 24rem;
+  filter: drop-shadow(0px 40px 80px rgba(230, 230, 230, 0.32));
+  border-radius: 16px;
+}
+
+.formSection {
+  padding: 10rem 0;
+}
+
+.form {
+  box-shadow: 0px 40px 80px rgba(230, 230, 230, 0.32);
+  border-radius: 16px;
+  padding: 4.8rem 1.6rem 3.2rem;
+}
+
+.formTitle {
+  margin-bottom: 3.2rem;
+}

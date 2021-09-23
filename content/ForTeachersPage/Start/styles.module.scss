@@ -1,0 +1,75 @@
+.start {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tabs {
+  max-width: 54rem;
+}
+
+.case {
+  display: none;
+
+  &.active {
+    display: block;
+
+    @include medium {
+      display: flex;
+    }
+  }
+}
+
+.caseContent {
+  @include medium {
+    margin-left: 6rem;
+  }
+
+  @include large {
+    margin-left: 12rem;
+  }
+}
+
+.thought {
+  display: block;
+  max-width: 34.3rem;
+  margin: 0 auto;
+}
+
+.description {
+  @include text-size(5);
+  color: $secondary-darkest;
+  margin: 1.6rem 0;
+
+  span {
+    display: block;
+    margin: 0.8rem 0;
+  }
+
+  @include medium {
+    @include text-size(4);
+  }
+}
+
+.subdescription {
+  @include text-size(5);
+  color: $secondary-darker;
+  margin: 1.6rem 0;
+
+  @include medium {
+    @include text-size(4);
+  }
+}
+
+.link {
+  @include text-size(5);
+  color: $primary;
+
+  svg {
+    stroke: $primary;
+  }
+
+  @include medium {
+    @include text-size(4);
+  }
+}

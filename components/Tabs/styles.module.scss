@@ -1,0 +1,21 @@
+.tabs {
+  @include text-size(4);
+  width: 100%;
+  display: flex;
+  border-radius: 100px;
+  background: $secondary-light;
+  color: $secondary-darkest;
+  margin: 6.4rem 0;
+}
+
+.tab {
+  flex: 1 1 0;
+  padding: 1.6rem 0;
+  border-radius: 100px;
+  background: $secondary-light;
+
+  &.active {
+    color: $secondary-lightest;
+    background-color: $primary;
+  }
+}

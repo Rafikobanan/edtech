@@ -1,21 +1,27 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl';
 import App, { AppContext, AppProps } from 'next/app';
 import { Request } from 'express';
-import useTranslationStore from '../hooks/useTranslationStore';
+import GlobalManager from 'components/GlobalManager';
+import { AppPreloadedState, useStore } from 'redux/store';
+import 'nprogress/nprogress.css';
 import 'styles/index.scss';
 
 interface MyAppProps extends AppProps {
-  messages: Request['messages'];
   locale: string;
+  preloadedState: AppPreloadedState;
 }
 
-const MyApp = ({ Component, locale, messages }: MyAppProps) => {
-  const translationStore = useTranslationStore(messages);
+const MyApp = ({ Component, locale, preloadedState, pageProps: { messages } }: MyAppProps) => {
+  const store = useStore(preloadedState);
 
   return (
-    <IntlProvider locale={locale || 'ru'} messages={translationStore}>
-      <Component />
+    <IntlProvider locale={locale || 'ru'} messages={messages}>
+      <Provider store={store}>
+        <Component />
+        <GlobalManager />
+      </Provider>
     </IntlProvider>
   );
 };
@@ -23,14 +29,18 @@ const MyApp = ({ Component, locale, messages }: MyAppProps) => {
 MyApp.getInitialProps = async (appContext: AppContext) => {
   const { ctx } = appContext;
   const req = ctx.req as Request;
-  const { messages } = req || {};
+  const { language } = req;
 
   const appProps = await App.getInitialProps(appContext);
 
   return {
     ...appProps,
-    messages,
-    locale: 'en'
+    locale: 'en',
+    preloadedState: {
+      global: {
+        language
+      }
+    } as AppPreloadedState
   };
 };
 

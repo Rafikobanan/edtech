@@ -11,6 +11,8 @@
 /.next/
 /out/
 
+/.env
+
 /dist
 
 .DS_Store

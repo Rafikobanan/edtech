@@ -12,6 +12,7 @@
     "es2021": true
   },
   "extends": [
+    "next",
     "plugin:react/recommended",
     "airbnb",
     "plugin:@typescript-eslint/eslint-recommended",
@@ -65,6 +66,9 @@
     "react/no-array-index-key": "off",
     "jsx-a11y/anchor-has-content": "off",
     "class-methods-use-this": "off",
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "jsx-a11y/no-static-element-interactions": "warn"
   }
 }

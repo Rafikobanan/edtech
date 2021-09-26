@@ -9,7 +9,12 @@ interface BurgerProps {
 }
 
 const Burger = ({ onClick, isActive, className }: BurgerProps) => (
-  <div onClick={onClick} className={cn(styles.burger, { [styles.active]: isActive }, className)}>
+  <div
+    tabIndex={0}
+    role="button"
+    onClick={onClick}
+    className={cn(styles.burger, { [styles.active]: isActive }, className)}
+  >
     <span />
     <span />
     <span />

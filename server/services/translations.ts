@@ -26,6 +26,7 @@ class TranslationsService {
     const translates = {};
 
     pages.forEach((page) =>
+      // @ts-ignore
       Object.assign(translates, translations.en[page], translations[language][page])
     );
 

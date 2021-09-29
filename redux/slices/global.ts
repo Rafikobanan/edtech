@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AppDispatch, RootState } from '../store';
+import type { AppDispatch, RootState } from '../store';
 
 type GlobalLanguage = 'en' | 'ru';
 

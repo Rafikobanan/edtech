@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import { configureStore, StateFromReducersMapObject } from '@reduxjs/toolkit';
 import { useMemo } from 'react';
 import { CombinedState, PreloadedState } from 'redux';
@@ -17,11 +18,16 @@ export type AppPreloadedState = PreloadedState<CombinedState<NoInfer<RootState>>
 
 let store: Store | undefined;
 
-const initStore = (preloadedState?: AppPreloadedState) =>
-  configureStore({
+const initStore = (preloadedState?: AppPreloadedState) => {
+  const initialStore = configureStore({ reducer });
+
+  _.defaultsDeep(preloadedState, initialStore.getState());
+
+  return configureStore({
     reducer,
     preloadedState
   });
+};
 
 export const initializeStore = (preloadedState?: AppPreloadedState) => {
   let newStore: Store = store ?? initStore(preloadedState);

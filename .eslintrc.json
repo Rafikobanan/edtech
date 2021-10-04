@@ -50,13 +50,7 @@
     "comma-dangle": ["error", "never"],
     "react/require-default-props": "off",
     "object-curly-newline": "off",
-    "no-param-reassign": ["error", {
-      "props": true,
-      "ignorePropertyModificationsFor": [
-        "req",
-        "state"
-      ]
-    }],
+    "no-param-reassign": "off",
     "react/jsx-props-no-spreading": "off",
     "consistent-return": "off",
     "import/no-unresolved": "off",
@@ -69,6 +63,7 @@
     "import/prefer-default-export": "off",
     "jsx-a11y/click-events-have-key-events": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
-    "jsx-a11y/no-static-element-interactions": "warn"
+    "jsx-a11y/no-static-element-interactions": "warn",
+    "default-case": "off"
   }
 }

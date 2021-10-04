@@ -3,7 +3,7 @@ import { GetServerSideProps } from 'next';
 import { Request } from 'express';
 import LandingLayout from 'layouts/LandingLayout';
 import IndexPage from 'content/IndexPage';
-import fetchTranslates from '../api/translates';
+import apiService from 'services/api';
 
 const Index = () => (
   <LandingLayout>
@@ -12,7 +12,7 @@ const Index = () => (
 );
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const messages = await fetchTranslates('index', req as Request);
+  const messages = await apiService.fetchTranslates('index', req as Request);
 
   return {
     props: {

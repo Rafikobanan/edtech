@@ -6,14 +6,17 @@ import Button from 'components/Button';
 import useTranslates from 'hooks/useTranslates';
 import ActiveLink from 'components/ActiveLink';
 import { HREFS } from 'config';
-import AppLink from 'components/AppLink';
+import { useActions } from 'hooks/useActions';
 import styles from './styles.module.scss';
 import Languages from '../Languages';
 
 const Menu = () => {
+  const { setActiveModal } = useActions();
+
   const [isBurgerActive, setIsBurgerActive] = useState<boolean>(false);
 
   const handleClick = () => setIsBurgerActive((prev) => !prev);
+  const handleButtonClick = () => setActiveModal('construct');
 
   const [forStudents, forTeachers, menuButton] = useTranslates(
     'all.landing.menu.students',
@@ -37,9 +40,9 @@ const Menu = () => {
           <Languages />
         </div>
         <Burger className={styles.burger} isActive={isBurgerActive} onClick={handleClick} />
-        <AppLink href={HREFS.login}>
-          <Button className={cn(styles.button, styles.rightButton)}>{menuButton}</Button>
-        </AppLink>
+        <Button onClick={handleButtonClick} className={cn(styles.button, styles.rightButton)}>
+          {menuButton}
+        </Button>
       </div>
       <div className={styles.fullMenu}>
         <div className={styles.fullMenuContent}>
@@ -53,9 +56,9 @@ const Menu = () => {
             <Languages />
           </div>
         </div>
-        <AppLink href={HREFS.login}>
-          <Button className={cn(styles.button, styles.fullMenuButton)}>{menuButton}</Button>
-        </AppLink>
+        <Button onClick={handleButtonClick} className={cn(styles.button, styles.fullMenuButton)}>
+          {menuButton}
+        </Button>
       </div>
     </div>
   );

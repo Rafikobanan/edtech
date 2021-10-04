@@ -4,6 +4,7 @@ import { IntlProvider } from 'react-intl';
 import App, { AppContext, AppProps } from 'next/app';
 import { Request } from 'express';
 import GlobalManager from 'components/GlobalManager';
+import Modal from 'components/Modal';
 import { AppPreloadedState, useStore } from 'redux/store';
 import 'nprogress/nprogress.css';
 import 'styles/index.scss';
@@ -21,6 +22,7 @@ const MyApp = ({ Component, locale, preloadedState, pageProps: { messages } }: M
       <Provider store={store}>
         <Component />
         <GlobalManager />
+        <Modal />
       </Provider>
     </IntlProvider>
   );

@@ -19,5 +19,13 @@
   "all.footer.terms.link": "Terms",
   "all.footer.privacy.link": "Privacy",
   "all.footer.copy": "Made with <img></img> in WW © 2021 EduFut.inc",
-  "all.footer.button": "Log In"
+  "all.footer.button": "Log In",
+  "all.modal.register.title": "We are still at the development stage",
+  "all.modal.register.content": "We will send you a message by Email. When can you use our platform.",
+  "all.modal.register.subcontent": "Thank you for registering on our future platform. Together we will make your life better!",
+  "all.modal.construct.title": "This page is under construction",
+  "all.modal.construct.content": "You can leave your email and we will notify you when we launch.",
+  "all.modal.construct.form.name": "Name",
+  "all.modal.construct.form.email": "Email",
+  "all.modal.construct.form.submit": "Submit"
 }

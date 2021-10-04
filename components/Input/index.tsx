@@ -6,7 +6,7 @@ interface InputProps extends React.HTMLProps<HTMLInputElement> {
   placeholder: string;
 }
 
-const Input = ({ className, placeholder, value, onFocus, onBlur, ...rest }: InputProps) => {
+const Input = ({ className, placeholder, value = '', onFocus, onBlur, ...rest }: InputProps) => {
   const [isFocusActive, setIsFocusActive] = useState<boolean>(false);
 
   const isPlaceholderActive = !!value || isFocusActive;

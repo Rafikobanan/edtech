@@ -55,7 +55,9 @@ const Footer = () => {
     <div className={styles.footer}>
       <div className={styles.top}>
         <Logo />
-        <Button className={styles.button}>{footerButton}</Button>
+        <AppLink href={HREFS.login}>
+          <Button className={styles.button}>{footerButton}</Button>
+        </AppLink>
       </div>
       <div className={styles.content}>
         <div className={styles.socials}>

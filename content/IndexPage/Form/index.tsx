@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import cn from 'classnames';
 import Input from 'components/Input';
 import useTranslates from 'hooks/useTranslates';
 import Button from 'components/Button';
+import { useActions } from 'hooks/useActions';
+import useForm from 'hooks/useForm';
 import styles from './styles.module.scss';
 
 interface FormState {
@@ -13,12 +15,9 @@ interface FormState {
 }
 
 const Form = () => {
-  const [form, setForm] = useState<FormState>({
-    name: '',
-    lastname: '',
-    email: '',
-    password: ''
-  });
+  const { setActiveModal } = useActions();
+
+  const { handleChangeCreator, form } = useForm<FormState>();
 
   const [formName, formLastname, formEmail, formPassword, formSubmit] = useTranslates(
     'index.form.name',
@@ -28,41 +27,37 @@ const Form = () => {
     'index.form.submit'
   ) as string[];
 
-  const changeHandleCreator =
-    (field: keyof FormState) => (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
-      setForm((prevState) => ({
-        ...prevState,
-        [field]: (e.target as HTMLInputElement).value
-      }));
-    };
+  const handleClick = () => setActiveModal('register');
 
   return (
     <form className={styles.form}>
       <Input
         className={cn(styles.input, styles.half)}
         placeholder={formName}
-        onChange={changeHandleCreator('name')}
+        onChange={handleChangeCreator('name')}
         value={form.name}
       />
       <Input
         className={cn(styles.input, styles.half)}
         placeholder={formLastname}
-        onChange={changeHandleCreator('lastname')}
+        onChange={handleChangeCreator('lastname')}
         value={form.lastname}
       />
       <Input
         className={styles.input}
         placeholder={formEmail}
-        onChange={changeHandleCreator('email')}
+        onChange={handleChangeCreator('email')}
         value={form.email}
       />
       <Input
         className={styles.input}
         placeholder={formPassword}
-        onChange={changeHandleCreator('password')}
+        onChange={handleChangeCreator('password')}
         value={form.password}
       />
-      <Button className={styles.submit}>{formSubmit}</Button>
+      <Button onClick={handleClick} className={styles.submit}>
+        {formSubmit}
+      </Button>
     </form>
   );
 };

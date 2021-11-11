@@ -4,6 +4,12 @@
   color: $secondary-darkest;
 }
 
+@mixin active-placeholder {
+  @include text-size(7);
+  color: $secondary-darker;
+  top: 1.2rem;
+}
+
 .placeholder {
   @include text-size(5);
   pointer-events: none;
@@ -11,12 +17,6 @@
   top: 2.2rem;
   left: 1.6rem;
   transition: all .3s;
-
-  &.active {
-    @include text-size(7);
-    color: $secondary-darker;
-    top: 1.2rem;
-  }
 }
 
 .input {
@@ -33,5 +33,15 @@
   &:focus {
     border-color: $primary-light;
     background: $secondary-light;
+
+    & + .placeholder {
+      @include active-placeholder;
+    }
+  }
+
+  &:valid {
+    & + .placeholder {
+      @include active-placeholder;
+    }
   }
 }

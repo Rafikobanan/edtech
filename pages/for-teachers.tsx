@@ -1,9 +1,8 @@
 import React from 'react';
 import { GetServerSideProps } from 'next';
-import { Request } from 'express';
 import LandingLayout from 'layouts/LandingLayout';
 import ForTeachersPage from 'content/ForTeachersPage';
-import apiService from 'services/api';
+import { ApiService } from 'services/api';
 
 const ForTeachers = () => (
   <LandingLayout>
@@ -11,8 +10,9 @@ const ForTeachers = () => (
   </LandingLayout>
 );
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const messages = await apiService.fetchTranslates('teacher', req as Request);
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const apiService = ApiService.create(req, res);
+  const messages = (await apiService.getTranslates('teacher')).data;
 
   return {
     props: {

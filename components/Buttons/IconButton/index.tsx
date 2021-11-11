@@ -1,6 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
-import BaseButton from 'components/BaseButton';
+import BaseButton from '../BaseButton';
 import styles from './styles.module.scss';
 
 interface IconButtonProps {

@@ -4,12 +4,6 @@
   color: $secondary-darkest;
 }
 
-@mixin active-placeholder {
-  @include text-size(7);
-  color: $secondary-darker;
-  top: 1.2rem;
-}
-
 .placeholder {
   @include text-size(5);
   pointer-events: none;
@@ -19,12 +13,26 @@
   transition: all .3s;
 }
 
+.errorMessage {
+  color: $danger;
+  margin-left: 0.6rem;
+}
+
 .input {
   padding: 3rem 1.6rem 1.2rem;
-  background: $secondary-light;
   border: 1px solid transparent;
   border-radius: 12px;
   width: 100%;
+}
+
+@mixin active-primary-placeholder {
+  @include text-size(7);
+  color: $secondary-darker;
+  top: 1.2rem;
+}
+
+.primary {
+  background: $secondary-light;
 
   @include hover {
     background: $secondary;
@@ -35,13 +43,17 @@
     background: $secondary-light;
 
     & + .placeholder {
-      @include active-placeholder;
+      @include active-primary-placeholder;
     }
   }
 
-  &:valid {
+  &.active {
     & + .placeholder {
-      @include active-placeholder;
+      @include active-primary-placeholder;
     }
+  }
+
+  &.error {
+    border-color: $danger;
   }
 }

@@ -27,5 +27,15 @@
   "all.modal.construct.content": "You can leave your email and we will notify you when we launch.",
   "all.modal.construct.form.name": "Name",
   "all.modal.construct.form.email": "Email",
-  "all.modal.construct.form.submit": "Submit"
+  "all.modal.construct.form.submit": "Submit",
+  "all.auth.sign.up": "Sign Up",
+  "all.auth.sign.in": "Sign In",
+  "all.input.name.required": "Please enter your name",
+  "all.input.name.max.length": "Your Name is too big",
+  "all.input.lastname.required": "Please enter your Last Name",
+  "all.input.lastname.max.length": "Your Last Name is too big",
+  "all.input.email.required": "Please enter your Email",
+  "all.input.email.incorrect": "Incorrect Email",
+  "all.input.password.required": "Please enter your password",
+  "all.input.password.min.length": "The minimum password length is 8 characters"
 }

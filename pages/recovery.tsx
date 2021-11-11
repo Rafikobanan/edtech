@@ -4,7 +4,7 @@ import { ApiService } from 'services/api';
 import { GetServerSideProps } from 'next';
 import LoginPage from 'content/LoginPage';
 
-const Login = () => (
+const Recovery = () => (
   <AuthLayout>
     <LoginPage />
   </AuthLayout>
@@ -12,7 +12,7 @@ const Login = () => (
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const apiService = ApiService.create(req, res);
-  const messages = (await apiService.getTranslates('login')).data;
+  const messages = (await apiService.getTranslates('recovery')).data;
 
   return {
     props: {
@@ -21,4 +21,4 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   };
 };
 
-export default Login;
+export default Recovery;

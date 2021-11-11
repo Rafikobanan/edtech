@@ -1,9 +1,13 @@
 import React from 'react';
-import BaseButton from 'components/BaseButton';
 import cn from 'classnames';
+import BaseButton from '../BaseButton';
 import styles from './styles.module.scss';
 
-interface ButtonProps extends React.HTMLProps<HTMLButtonElement> {
+interface ButtonProps
+  extends React.DetailedHTMLProps<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  > {
   variant?: 'contained';
   color?: 'primary' | 'secondary';
 }

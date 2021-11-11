@@ -1,0 +1,71 @@
+.progress {
+  margin: 0.8rem 0;
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  @include text-size(3);
+  font-weight: 600;
+  color: $secondary-darkest;
+  margin: 0.8rem 0;
+  text-align: center;
+
+  span {
+    color: $primary;
+  }
+}
+
+.subtitle {
+  @include text-size(5);
+  color: $secondary-darkest;
+  margin: 0.8rem 0 2.4rem;
+  text-align: center;
+}
+
+.input {
+  display: block;
+  margin: 0.8rem 0;
+}
+
+.buttonsContainer {
+  position: fixed;
+  left: 1.6rem;
+  bottom: 1.6rem;
+  right: 1.6rem;
+  background-color: $secondary-lightest;
+}
+
+.checkboxButton {
+  margin: 0.6rem;
+}
+
+.checkboxButtonWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.button {
+  width: 100%;
+}
+
+.checkboxWrapper {
+  &.checkboxWrapper {
+    display: block;
+    padding: 1.2rem 0;
+  }
+}
+
+.checkboxLabel {
+  @include text-size(5);
+  color: $secondary-darkest;
+  font-weight: 600;
+
+  a {
+    color: $primary;
+  }
+} 

@@ -1,17 +1,17 @@
 import React from 'react';
 import useTranslates from 'hooks/useTranslates';
-import Input from 'components/Input';
-import Button from 'components/Button';
-import useForm from 'hooks/useForm';
+import Input from 'components/Inputs/Input';
+import Button from 'components/Buttons/Button';
+import { useForm } from 'react-hook-form';
 import styles from '../styles.module.scss';
 
-interface FormState {
+interface Inputs {
   name: string;
   email: string;
 }
 
 const Construct = () => {
-  const { handleChangeCreator, form } = useForm<FormState>();
+  const { register } = useForm<Inputs>();
 
   const [
     constructTitle,
@@ -31,19 +31,21 @@ const Construct = () => {
     <div className={styles.construct}>
       <h4 className={styles.title}>{constructTitle}</h4>
       <p className={styles.content}>{constructContent}</p>
-      <Input
-        onChange={handleChangeCreator('name')}
-        value={form.name}
-        className={styles.constructInput}
-        placeholder={constructFormName as string}
-      />
-      <Input
-        onChange={handleChangeCreator('email')}
-        value={form.email}
-        className={styles.constructInput}
-        placeholder={constructFormEmail as string}
-      />
-      <Button className={styles.constructButton}>{constructFormSubmit}</Button>
+      <form>
+        <Input
+          className={styles.constructInput}
+          placeholder={constructFormName as string}
+          {...register('name')}
+        />
+        <Input
+          className={styles.constructInput}
+          placeholder={constructFormEmail as string}
+          {...register('email')}
+        />
+        <Button type="submit" className={styles.constructButton}>
+          {constructFormSubmit}
+        </Button>
+      </form>
     </div>
   );
 };

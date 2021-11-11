@@ -1,17 +1,16 @@
 import React from 'react';
 import CrossSvg from 'assets/cross.svg';
-import { useSelector } from 'react-redux';
-import { getGlobalActiveModal } from 'redux/slices/global';
-import { useActions } from 'hooks/useActions';
+import { useDispatch, useSelector } from 'react-redux';
+import { getGlobalActiveModal, setActiveModal } from 'redux/slices/global';
 import styles from './styles.module.scss';
 import Register from './Register';
 import Construct from './Construct';
 
 const Modal = () => {
-  const { setActiveModal } = useActions();
+  const dispatch = useDispatch();
   const activeModal = useSelector(getGlobalActiveModal);
 
-  const handleCloseClick = () => setActiveModal(null);
+  const handleCloseClick = () => dispatch(setActiveModal(null));
   const stopPropagation = (e: React.MouseEvent) => e.stopPropagation();
 
   const renderContent = () => {

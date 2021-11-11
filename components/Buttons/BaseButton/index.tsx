@@ -2,7 +2,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
 import styles from './styles.module.scss';
 
-type BaseButtonProps = React.HTMLProps<HTMLButtonElement>;
+type BaseButtonProps = React.DetailedHTMLProps<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+>;
 
 const BaseButton = ({ className, children, ...rest }: BaseButtonProps) => {
   const ref = useRef<HTMLButtonElement>(null);
@@ -32,13 +35,13 @@ const BaseButton = ({ className, children, ...rest }: BaseButtonProps) => {
 
   return (
     <button
-      {...rest}
+      type="button"
       ref={ref}
       className={cn(className, styles.button)}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
-      type="button"
+      {...rest}
     >
       <div className={styles.content}>{children}</div>
       {isRippling && (

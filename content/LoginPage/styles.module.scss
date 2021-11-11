@@ -1,0 +1,37 @@
+.imageContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.title {
+    @include text-size(3);
+    text-align: center;
+    font-weight: 600;
+    margin: 3.2rem 0 2.8rem;
+
+    span {
+        color: $primary;
+    }
+}
+
+.input {
+    width: 100%;
+    margin: 0.4rem 0;
+}
+
+.textButton {
+    margin: 1.2rem auto 0;
+    display: block;
+}
+
+.buttonContainer {
+    position: fixed;
+    left: 1.6rem;
+    bottom: 1.6rem;
+    right: 1.6rem;
+    background-color: $secondary-lightest;
+}
+
+.submitButton {
+    width: 100%;
+}

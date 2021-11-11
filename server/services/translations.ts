@@ -1,6 +1,8 @@
 import enAllTranslations from '../translations/en/all.json';
 import enIndexTranslations from '../translations/en/index.json';
 import enTeacherTranslations from '../translations/en/teacher.json';
+import enRegistrationTranslations from '../translations/en/registration.json';
+import enLoginTranslations from '../translations/en/login.json';
 import ruAllTranslations from '../translations/ru/all.json';
 import ruIndexTranslations from '../translations/ru/index.json';
 import ruTeacherTranslations from '../translations/ru/teacher.json';
@@ -9,7 +11,9 @@ const translations = {
   en: {
     all: enAllTranslations,
     index: enIndexTranslations,
-    teacher: enTeacherTranslations
+    teacher: enTeacherTranslations,
+    registration: enRegistrationTranslations,
+    login: enLoginTranslations
   },
   ru: {
     all: ruAllTranslations,
@@ -33,7 +37,7 @@ class TranslationsService {
     return translates;
   }
 
-  getLanguage(lang: string): Languages {
+  getAvailableLanguage(lang: string): Languages {
     if (availableLanguages.includes(<Languages>lang)) return <Languages>lang;
 
     return 'en';

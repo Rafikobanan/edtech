@@ -1,0 +1,57 @@
+.wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.checkbox {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.customCheckbox {
+  position: absolute;
+  border: 0.1rem solid transparent;
+  border-radius: 4px;
+  width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s;
+
+  svg {
+    width: 1.3rem;
+    height: 1rem;
+  }
+}
+
+.label {
+  position: relative;
+  padding-left: 3.2rem;
+  display: flex;
+  align-items: center;
+  min-height: 2rem;
+}
+
+.errorCheckbox {
+  &.errorCheckbox.errorCheckbox {
+    border-color: $danger;
+  }
+}
+
+.primary {
+  & + .customCheckbox {
+    border-color: $secondary-darker;
+
+    svg {
+      fill: $secondary-lightest;
+    }
+  }
+
+  &:checked + .customCheckbox {
+    background-color: $primary;
+    border-color: $primary;
+  }
+}
+

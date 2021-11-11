@@ -1,8 +1,8 @@
-import Cookies from 'js-cookie';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { AppDispatch, RootState } from '../store';
+import cookieService from '../../services/cookie';
 
-type GlobalLanguage = 'en' | 'ru';
+export type GlobalLanguage = 'en' | 'ru';
 type ActiveModal = 'register' | 'construct' | null;
 
 interface GlobalState {
@@ -30,13 +30,12 @@ const globalSlice = createSlice({
 
 export default globalSlice.reducer;
 
+export const { setLanguage, setActiveModal } = globalSlice.actions;
+
+export const changeLanguage = (language: GlobalLanguage) => (dispatch: AppDispatch) => {
+  cookieService.setLanguage(language);
+  dispatch(setLanguage(language));
+};
+
 export const getGlobalLanguage = (state: RootState) => state.global.language;
 export const getGlobalActiveModal = (state: RootState) => state.global.activeModal;
-
-export const globalActionCreators = {
-  ...globalSlice.actions,
-  changeLanguage: (language: GlobalLanguage) => (dispatch: AppDispatch) => {
-    Cookies.set('language', language);
-    dispatch(globalActionCreators.setLanguage(language));
-  }
-};

@@ -1,9 +1,8 @@
 import React from 'react';
 import { GetServerSideProps } from 'next';
-import { Request } from 'express';
 import LandingLayout from 'layouts/LandingLayout';
 import IndexPage from 'content/IndexPage';
-import apiService from 'services/api';
+import { ApiService } from 'services/api';
 
 const Index = () => (
   <LandingLayout>
@@ -11,8 +10,9 @@ const Index = () => (
   </LandingLayout>
 );
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const messages = await apiService.fetchTranslates('index', req as Request);
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const apiService = ApiService.create(req, res);
+  const messages = (await apiService.getTranslates('index')).data;
 
   return {
     props: {

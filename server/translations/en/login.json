@@ -1,0 +1,7 @@
+{
+    "login.title": "<span>Hello,</span> sign in",
+    "login.input.email": "Email",
+    "login.input.password": "Password",
+    "login.forgot.button": "Forgot password?",
+    "login.submit.button": "Sign In"
+}

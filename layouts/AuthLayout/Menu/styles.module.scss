@@ -1,0 +1,15 @@
+.menu {
+  z-index: 3;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.6rem 1.6rem;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: $secondary-lightest;
+}
+
+.button {
+  height: 100%;
+}

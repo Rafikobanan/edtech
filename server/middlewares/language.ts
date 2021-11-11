@@ -1,13 +1,22 @@
 import { Response, Request, NextFunction } from 'express';
 import translationsService from '../services/translations';
+import { cookies } from '../config';
 
 const languageMiddleware = (req: Request, res: Response, next: NextFunction) => {
-  const language = translationsService.getLanguage(
-    req.cookies.language || req.acceptsLanguages('ru', 'en')
+  const languageCookie = req.cookies[cookies.LANGUAGE];
+
+  const availableLanguage = translationsService.getAvailableLanguage(
+    languageCookie || req.acceptsLanguages('ru', 'en')
   );
 
-  res.cookie('language', language);
-  req.language = language;
+  if (!languageCookie)
+    res.cookie(cookies.LANGUAGE, availableLanguage, {
+      ...cookies.DEFAULT_COOKIE_OPTIONS,
+      httpOnly: false,
+      maxAge: cookies.YEAR_DURATION
+    });
+
+  req.language = availableLanguage;
 
   next();
 };

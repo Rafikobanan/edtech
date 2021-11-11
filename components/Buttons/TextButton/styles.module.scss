@@ -1,0 +1,26 @@
+.button {
+  @include text-size(5);
+  font-weight: 600;
+  background-color: transparent;
+  transition: color 0.3s;
+}
+
+.primary {
+  color: $secondary-darkest;
+
+  &:hover {
+    color: $primary-dark;
+  }
+
+  @include hover {
+    color: $primary-light;
+  }
+
+  &:disabled {
+    color: $secondary-dark;
+  }
+
+  &.filled {
+    color: $primary;
+  }
+}

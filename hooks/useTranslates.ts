@@ -11,16 +11,19 @@ type Message =
       >?,
       Options?
     ]
-  | string;
+  | string
+  | undefined;
 
 const useTranslates = (...messages: Message[]): (React.ReactNode | string)[] => {
   const intl = useIntl();
 
-  return messages.map((message) =>
-    typeof message === 'string'
-      ? intl.formatMessage({ id: message })
-      : intl.formatMessage(...message)
-  );
+  return messages.map((message) => {
+    if (!message) return '';
+
+    if (typeof message === 'string') return intl.formatMessage({ id: message });
+
+    return intl.formatMessage(...message);
+  });
 };
 
 export default useTranslates;

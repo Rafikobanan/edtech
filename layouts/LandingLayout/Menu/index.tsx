@@ -2,21 +2,22 @@ import React, { useState } from 'react';
 import cn from 'classnames';
 import Logo from 'components/Logo';
 import Burger from 'components/Burger';
-import Button from 'components/Button';
+import Button from 'components/Buttons/Button';
 import useTranslates from 'hooks/useTranslates';
 import ActiveLink from 'components/ActiveLink';
 import { HREFS } from 'config';
-import { useActions } from 'hooks/useActions';
+import { setActiveModal } from 'redux/slices/global';
+import { useDispatch } from 'react-redux';
 import styles from './styles.module.scss';
 import Languages from '../Languages';
 
 const Menu = () => {
-  const { setActiveModal } = useActions();
+  const dispatch = useDispatch();
 
   const [isBurgerActive, setIsBurgerActive] = useState<boolean>(false);
 
   const handleClick = () => setIsBurgerActive((prev) => !prev);
-  const handleButtonClick = () => setActiveModal('construct');
+  const handleButtonClick = () => dispatch(setActiveModal('construct'));
 
   const [forStudents, forTeachers, menuButton] = useTranslates(
     'all.landing.menu.students',

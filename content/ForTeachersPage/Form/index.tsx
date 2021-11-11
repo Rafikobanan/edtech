@@ -1,20 +1,23 @@
 import React from 'react';
 import cn from 'classnames';
-import Input from 'components/Input';
+import Input from 'components/Inputs/Input';
 import useTranslates from 'hooks/useTranslates';
-import Button from 'components/Button';
-import useForm from 'hooks/useForm';
+import Button from 'components/Buttons/Button';
+import { useForm } from 'react-hook-form';
+import { setActiveModal } from 'redux/slices/global';
+import { useDispatch } from 'react-redux';
 import styles from './styles.module.scss';
 
-interface FormState {
+interface Inputs {
   name: string;
-  lastname: string;
+  lastName: string;
   email: string;
   password: string;
 }
 
 const Form = () => {
-  const { handleChangeCreator, form } = useForm<FormState>();
+  const dispatch = useDispatch();
+  const { register, handleSubmit } = useForm<Inputs>();
 
   const [formName, formLastname, formEmail, formPassword, formSubmit] = useTranslates(
     'teacher.form.name',
@@ -24,33 +27,25 @@ const Form = () => {
     'teacher.form.submit'
   ) as string[];
 
+  const showModal = () => dispatch(setActiveModal('register'));
+
   return (
-    <form className={styles.form}>
+    <form onSubmit={handleSubmit(showModal)} className={styles.form}>
       <Input
         className={cn(styles.input, styles.half)}
         placeholder={formName}
-        onChange={handleChangeCreator('name')}
-        value={form.name}
+        {...register('name')}
       />
       <Input
         className={cn(styles.input, styles.half)}
         placeholder={formLastname}
-        onChange={handleChangeCreator('lastname')}
-        value={form.lastname}
+        {...register('lastName')}
       />
-      <Input
-        className={styles.input}
-        placeholder={formEmail}
-        onChange={handleChangeCreator('email')}
-        value={form.email}
-      />
-      <Input
-        className={styles.input}
-        placeholder={formPassword}
-        onChange={handleChangeCreator('password')}
-        value={form.password}
-      />
-      <Button className={styles.submit}>{formSubmit}</Button>
+      <Input className={styles.input} placeholder={formEmail} {...register('email')} />
+      <Input className={styles.input} placeholder={formPassword} {...register('password')} />
+      <Button type="submit" className={styles.submit}>
+        {formSubmit}
+      </Button>
     </form>
   );
 };

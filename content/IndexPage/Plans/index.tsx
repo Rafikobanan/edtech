@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import cn from 'classnames';
 import useTranslates from 'hooks/useTranslates';
-import Button from 'components/Button';
+import Button from 'components/Buttons/Button';
 import CheckMarkSvg from 'assets/check-mark.svg';
 import styles from './styles.module.scss';
 import Tabs from '../../../components/Tabs';

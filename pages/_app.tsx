@@ -18,7 +18,7 @@ const MyApp = ({ Component, locale, preloadedState, pageProps: { messages } }: M
   const store = useStore(preloadedState);
 
   return (
-    <IntlProvider locale={locale || 'ru'} messages={messages}>
+    <IntlProvider locale={locale} messages={messages}>
       <Provider store={store}>
         <Component />
         <GlobalManager />
@@ -29,15 +29,18 @@ const MyApp = ({ Component, locale, preloadedState, pageProps: { messages } }: M
 };
 
 MyApp.getInitialProps = async (appContext: AppContext) => {
+  const appProps = await App.getInitialProps(appContext);
+
   const { ctx } = appContext;
   const req = ctx.req as Request;
-  const { language } = req;
 
-  const appProps = await App.getInitialProps(appContext);
+  // eslint-disable-next-line no-underscore-dangle
+  const { language } = req || window.__NEXT_DATA__;
 
   return {
     ...appProps,
     locale: 'en',
+    language,
     preloadedState: {
       global: {
         language

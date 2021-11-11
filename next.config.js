@@ -9,6 +9,9 @@ const nextConfig = {
       @import "./styles/mixins.scss";
     `
   },
+  images: {
+    formats: ['image/avif', 'image/webp']
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,

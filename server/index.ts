@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
 import routes from './routes';
 import languageMiddleware from './middlewares/language';
+import { isProduction } from './config';
 
 dotenv.config();
 
@@ -17,7 +18,11 @@ const PORT = process.env.PORT || 3000;
 app.prepare().then(() => {
   const server = express();
 
-  server.use(helmet());
+  server.use(
+    helmet({
+      contentSecurityPolicy: isProduction
+    })
+  );
   server.use(cookieParser());
 
   server.use(routes);

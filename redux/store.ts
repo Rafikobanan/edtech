@@ -1,13 +1,15 @@
-import _ from 'lodash';
+import defaultsDeep from 'lodash/defaultsDeep';
 import { configureStore, StateFromReducersMapObject } from '@reduxjs/toolkit';
 import { useMemo } from 'react';
 import { CombinedState, PreloadedState } from 'redux';
 import { NoInfer } from '@reduxjs/toolkit/src/tsHelpers';
 import global from './slices/global';
+import profile from './slices/profile';
 import { isServer } from '../utils';
 
 const reducer = {
-  global
+  global,
+  profile
 };
 
 type Store = ReturnType<typeof initStore>;
@@ -19,13 +21,14 @@ export type AppPreloadedState = PreloadedState<CombinedState<NoInfer<RootState>>
 let store: Store | undefined;
 
 const initStore = (preloadedState?: AppPreloadedState) => {
-  const initialStore = configureStore({ reducer });
+  const initialStore = store || configureStore({ reducer });
+  const state = {};
 
-  _.defaultsDeep(preloadedState, initialStore.getState());
+  defaultsDeep(state, preloadedState, initialStore.getState());
 
   return configureStore({
     reducer,
-    preloadedState
+    preloadedState: state
   });
 };
 
@@ -33,10 +36,7 @@ export const initializeStore = (preloadedState?: AppPreloadedState) => {
   let newStore: Store = store ?? initStore(preloadedState);
 
   if (preloadedState && store) {
-    newStore = initStore({
-      ...store.getState(),
-      ...preloadedState
-    });
+    newStore = initStore(preloadedState);
 
     store = undefined;
   }

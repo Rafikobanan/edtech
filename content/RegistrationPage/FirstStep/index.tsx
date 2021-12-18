@@ -3,7 +3,7 @@ import Image from 'next/image';
 import useTranslates from 'hooks/useTranslates';
 import Input from 'components/Inputs/Input';
 import Button from 'components/Buttons/Button';
-import { FORM_VALIDATION } from 'config';
+import { formValidation } from 'config';
 import { useForm } from 'react-hook-form';
 import wavingHand from '../../../public/waving-hand.png';
 import styles from '../styles.module.scss';
@@ -49,7 +49,7 @@ const FirstStep = () => {
           {...register('name', {
             required: 'all.input.name.required',
             maxLength: {
-              value: FORM_VALIDATION.maxNameLength,
+              value: formValidation.MAX_NAME_LENGTH,
               message: 'all.input.name.max.length'
             }
           })}
@@ -61,7 +61,7 @@ const FirstStep = () => {
           {...register('lastName', {
             required: 'all.input.lastname.required',
             maxLength: {
-              value: FORM_VALIDATION.maxLastNameLength,
+              value: formValidation.MAX_LAST_NAME_LENGTH,
               message: 'all.input.lastname.max.length'
             }
           })}

@@ -9,7 +9,7 @@ import Button from 'components/Buttons/Button';
 import AppLink from 'components/AppLink';
 import useTranslates from 'hooks/useTranslates';
 import styles from './styles.module.scss';
-import { HREFS } from '../../config';
+import { hrefs } from '../../config';
 import ActiveLink from '../ActiveLink';
 
 const Footer = () => {
@@ -55,7 +55,7 @@ const Footer = () => {
     <div className={styles.footer}>
       <div className={styles.top}>
         <Logo />
-        <AppLink href={HREFS.login}>
+        <AppLink href={hrefs.LOGIN}>
           <Button className={styles.button}>{footerButton}</Button>
         </AppLink>
       </div>
@@ -77,10 +77,10 @@ const Footer = () => {
         <div className={styles.links}>
           <div className={styles.column}>
             <div className={styles.columnTitle}>{footerProducts}</div>
-            <ActiveLink activeClassName={styles.activeLink} href={HREFS.forStudents}>
+            <ActiveLink activeClassName={styles.activeLink} href={hrefs.FOR_STUDENTS}>
               {studentsLink}
             </ActiveLink>
-            <ActiveLink activeClassName={styles.activeLink} href={HREFS.forTeachers}>
+            <ActiveLink activeClassName={styles.activeLink} href={hrefs.FOR_TEACHERS}>
               {teachersLink}
             </ActiveLink>
             <AppLink href="/">{businessLink}</AppLink>

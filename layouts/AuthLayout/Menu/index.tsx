@@ -4,7 +4,7 @@ import Logo from 'components/Logo';
 import TextButton from 'components/Buttons/TextButton';
 import useTranslates from 'hooks/useTranslates';
 import AppLink from 'components/AppLink';
-import { HREFS } from 'config';
+import { hrefs } from 'config';
 import styles from './styles.module.scss';
 
 interface MenuProps {
@@ -17,7 +17,7 @@ const Menu = ({ isSignInLink }: MenuProps) => {
   return (
     <div className={cn(styles.menu)}>
       <Logo />
-      <AppLink href={isSignInLink ? HREFS.login : HREFS.registration}>
+      <AppLink href={isSignInLink ? hrefs.LOGIN : hrefs.REGISTRATION}>
         <TextButton className={styles.button}>{isSignInLink ? signIn : signUp}</TextButton>
       </AppLink>
     </div>

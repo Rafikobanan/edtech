@@ -2,7 +2,7 @@ import React from 'react';
 import useTranslates from 'hooks/useTranslates';
 import Button from 'components/Buttons/Button';
 import AppLink from 'components/AppLink';
-import { HREFS } from 'config';
+import { hrefs } from 'config';
 import styles from '../styles.module.scss';
 
 const FifthStep = () => {
@@ -18,7 +18,7 @@ const FifthStep = () => {
       <h4 className={styles.title}>{title}</h4>
       <p className={styles.subtitle}>{subtitle}</p>
       <div className={styles.buttonsContainer}>
-        <AppLink href={HREFS.login}>
+        <AppLink href={hrefs.LOGIN}>
           <Button className={styles.button}>{button}</Button>
         </AppLink>
       </div>

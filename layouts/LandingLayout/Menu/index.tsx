@@ -5,19 +5,15 @@ import Burger from 'components/Burger';
 import Button from 'components/Buttons/Button';
 import useTranslates from 'hooks/useTranslates';
 import ActiveLink from 'components/ActiveLink';
-import { HREFS } from 'config';
-import { setActiveModal } from 'redux/slices/global';
-import { useDispatch } from 'react-redux';
-import styles from './styles.module.scss';
+import { hrefs } from 'config';
+import AppLink from 'components/AppLink';
 import Languages from '../Languages';
+import styles from './styles.module.scss';
 
 const Menu = () => {
-  const dispatch = useDispatch();
-
   const [isBurgerActive, setIsBurgerActive] = useState<boolean>(false);
 
   const handleClick = () => setIsBurgerActive((prev) => !prev);
-  const handleButtonClick = () => dispatch(setActiveModal('construct'));
 
   const [forStudents, forTeachers, menuButton] = useTranslates(
     'all.landing.menu.students',
@@ -29,10 +25,10 @@ const Menu = () => {
     <div className={cn(styles.menu, { [styles.active]: isBurgerActive })}>
       <Logo />
       <div className={styles.middle}>
-        <ActiveLink activeClassName={styles.activeLink} href={HREFS.forStudents}>
+        <ActiveLink activeClassName={styles.activeLink} href={hrefs.FOR_STUDENTS}>
           {forStudents}
         </ActiveLink>
-        <ActiveLink activeClassName={styles.activeLink} href={HREFS.forTeachers}>
+        <ActiveLink activeClassName={styles.activeLink} href={hrefs.FOR_TEACHERS}>
           {forTeachers}
         </ActiveLink>
       </div>
@@ -41,25 +37,25 @@ const Menu = () => {
           <Languages />
         </div>
         <Burger className={styles.burger} isActive={isBurgerActive} onClick={handleClick} />
-        <Button onClick={handleButtonClick} className={cn(styles.button, styles.rightButton)}>
-          {menuButton}
-        </Button>
+        <AppLink href={hrefs.REGISTRATION}>
+          <Button className={cn(styles.button, styles.rightButton)}>{menuButton}</Button>
+        </AppLink>
       </div>
       <div className={styles.fullMenu}>
         <div className={styles.fullMenuContent}>
-          <ActiveLink activeClassName={styles.activeLink} href={HREFS.forStudents}>
+          <ActiveLink activeClassName={styles.activeLink} href={hrefs.FOR_STUDENTS}>
             {forStudents}
           </ActiveLink>
-          <ActiveLink activeClassName={styles.activeLink} href={HREFS.forTeachers}>
+          <ActiveLink activeClassName={styles.activeLink} href={hrefs.FOR_TEACHERS}>
             {forTeachers}
           </ActiveLink>
           <div className={styles.languages}>
             <Languages />
           </div>
         </div>
-        <Button onClick={handleButtonClick} className={cn(styles.button, styles.fullMenuButton)}>
-          {menuButton}
-        </Button>
+        <AppLink href={hrefs.REGISTRATION}>
+          <Button className={cn(styles.button, styles.fullMenuButton)}>{menuButton}</Button>
+        </AppLink>
       </div>
     </div>
   );

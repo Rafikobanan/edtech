@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { GetServerSidePropsContext } from 'next';
 import setCookie from 'set-cookie-parser';
-import { ENVS } from '../config';
+import { envs } from '../config';
 
 interface Translates {
   [key: string]: string;
@@ -54,7 +54,7 @@ export class ApiService {
     this.res = res;
 
     this.api.defaults.withCredentials = true;
-    this.api.defaults.baseURL = `${ENVS.API_URL}/api`;
+    this.api.defaults.baseURL = `${envs.API_URL}/api`;
 
     this.api.interceptors.request.use((config) => {
       if (this.req && this.res) {
@@ -86,7 +86,7 @@ export class ApiService {
         if (error.response?.status === 401 && !originalRequest.isRetried) {
           originalRequest.isRetried = true;
 
-          // await this.refreshTokens();
+          await this.refreshTokens();
 
           return this.api(originalRequest);
         }
@@ -102,10 +102,14 @@ export class ApiService {
 
   getTranslates(page: string): Promise<AxiosResponse<Translates>> {
     return this.api({
-      baseURL: ENVS.CLIENT_SERVER_URL,
+      baseURL: envs.CLIENT_SERVER_URL,
       url: `/api/translates/${page}`,
       method: 'GET'
     });
+  }
+
+  refreshTokens() {
+    return this.api.post('/auth/refresh');
   }
 
   register(
@@ -121,6 +125,10 @@ export class ApiService {
 
   login(email: string, password: string) {
     return this.api.post('/auth/login', { email, password });
+  }
+
+  getUserInfo() {
+    return this.api.get('/users/info');
   }
 }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import useTranslates from 'hooks/useTranslates';
 import Input from 'components/Inputs/Input';
 import Button from 'components/Buttons/Button';
-import { FORM_VALIDATION, HREFS } from 'config';
+import { formValidation, hrefs } from 'config';
 import Checkbox from 'components/Inputs/Checkbox';
 import AppLink from 'components/AppLink';
 import { useForm } from 'react-hook-form';
@@ -51,8 +51,8 @@ const FourthStep = () => {
     [
       { id: 'registration.fourth.terms.checkbox' },
       {
-        terms: <AppLink href={HREFS.terms}>{terms}</AppLink>,
-        privacy: <AppLink href={HREFS.policy}>{policy}</AppLink>
+        terms: <AppLink href={hrefs.TERMS}>{terms}</AppLink>,
+        privacy: <AppLink href={hrefs.POLICY}>{policy}</AppLink>
       }
     ],
     'registration.fourth.mailing.checkbox',
@@ -76,7 +76,7 @@ const FourthStep = () => {
           {...register('email', {
             required: 'all.input.email.required',
             pattern: {
-              value: FORM_VALIDATION.emailRegex,
+              value: formValidation.EMAIL_REGEX,
               message: 'all.input.email.incorrect'
             }
           })}
@@ -89,7 +89,7 @@ const FourthStep = () => {
           {...register('password', {
             required: 'all.input.password.required',
             minLength: {
-              value: FORM_VALIDATION.minPasswordLength,
+              value: formValidation.MIN_PASSWORD_LENGTH,
               message: 'all.input.password.min.length'
             }
           })}

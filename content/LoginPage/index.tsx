@@ -6,7 +6,7 @@ import Input from 'components/Inputs/Input';
 import Button from 'components/Buttons/Button';
 import TextButton from 'components/Buttons/TextButton';
 import AppLink from 'components/AppLink';
-import { HREFS, FORM_VALIDATION } from 'config';
+import { hrefs, formValidation } from 'config';
 import { useForm } from 'react-hook-form';
 import apiService from 'services/api';
 import styles from './styles.module.scss';
@@ -61,7 +61,7 @@ const LoginPage = () => {
           {...register('email', {
             required: 'all.input.email.required',
             pattern: {
-              value: FORM_VALIDATION.emailRegex,
+              value: formValidation.EMAIL_REGEX,
               message: 'all.input.email.incorrect'
             }
           })}
@@ -74,12 +74,12 @@ const LoginPage = () => {
           {...register('password', {
             required: 'all.input.password.required',
             minLength: {
-              value: FORM_VALIDATION.minPasswordLength,
+              value: formValidation.MIN_PASSWORD_LENGTH,
               message: 'all.input.password.min.length'
             }
           })}
         />
-        <AppLink href={HREFS.recovery}>
+        <AppLink href={hrefs.RECOVERY}>
           <TextButton className={styles.textButton}>{forgotButton}</TextButton>
         </AppLink>
         <div className={styles.buttonContainer}>

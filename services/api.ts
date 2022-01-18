@@ -83,7 +83,13 @@ export class ApiService {
       async (error: AxiosError) => {
         const originalRequest: AxiosRequestConfig & { isRetried?: boolean } = error.config;
 
-        if (error.response?.status === 401 && !originalRequest.isRetried) {
+        const { response } = error;
+
+        if (this.res && response?.headers['set-cookie']) {
+          this.res.setHeader('set-cookie', response.headers['set-cookie']);
+        }
+
+        if (response?.status === 401 && !originalRequest.isRetried) {
           originalRequest.isRetried = true;
 
           await this.refreshTokens();
